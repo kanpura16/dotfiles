@@ -1,0 +1,11 @@
+/*
+/.**
+
+!.gitignore
+!/helix/*
+!/hypr/*
+!vimium-options.json
+!/wezterm/*
+!/wofi/*
+!/zsh/*
+!/zsh/sheldon/*
