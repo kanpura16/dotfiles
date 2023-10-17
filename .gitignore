@@ -2,10 +2,16 @@
 /.**
 
 !.gitignore
+!/helix
 !/helix/*
+!/hypr
 !/hypr/*
 !vimium-options.json
+!/wezterm
 !/wezterm/*
+!/wofi
 !/wofi/*
+!/zsh
 !/zsh/*
+!/zsh/sheldon
 !/zsh/sheldon/*

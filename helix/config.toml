@@ -1,0 +1,47 @@
+theme = "fleet_dark"
+
+[editor]
+true-color = true
+color-modes = true
+bufferline = "multiple"
+idle-timeout = 0
+completion-trigger-len = 1
+
+[editor.cursor-shape]
+insert = 'bar'
+select = 'underline'
+
+[editor.soft-wrap]
+enable = true
+max-indent-retain = 32
+
+[editor.lsp]
+# display-inlay-hints = true
+
+[editor.file-picker]
+hidden = false
+
+[keys.normal]
+esc = ["collapse_selection", "keep_primary_selection"]
+J = "join_selections_space"
+A-h = "jump_view_left"
+A-j = "jump_view_down"
+A-k = "jump_view_up"
+A-l = "jump_view_right"
+A-H = "swap_view_left"
+A-J = "swap_view_down"
+A-K = "swap_view_up"
+A-L = "swap_view_right"
+A-v = "vsplit"
+A-s = "hsplit"
+A-t = "transpose_view"
+A-q = "wclose"
+
+[keys.insert]
+q = { i = "normal_mode" }
+C-f = "move_char_right"
+C-b = "move_char_left"
+C-p = "move_line_up"
+C-n = "move_line_down"
+C-a = "goto_line_start"
+C-e = "goto_line_end_newline"

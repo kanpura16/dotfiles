@@ -1,0 +1,25 @@
+window {
+    background-color: #7C818C;
+}
+
+#outer-box {
+    margin: 2px;
+    padding: 10px;
+    background-color: #24283B;
+}
+
+#input {
+    font-size: 16px;
+    margin-top: 4px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: #383C4A;
+}
+
+#text {
+    font-size: 16px;
+}
+
+#entry:selected {
+    background-color: #33467C;
+}
