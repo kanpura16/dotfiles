@@ -15,8 +15,8 @@ local config = {
 config.keys = {
   { key = 'j', mods = 'CTRL|SHIFT', action = act.ActivateTabRelative(-1) },
   { key = 'k', mods = 'CTRL|SHIFT', action = act.ActivateTabRelative(1) },
-  { key = 'j', mods = 'CTRL|SHIFT|ALT', action = act.MoveTabRelative(-1) },
-  { key = 'k', mods = 'CTRL|SHIFT|ALT', action = act.MoveTabRelative(1) },
+  { key = 'j', mods = 'CTRL|ALT', action = act.MoveTabRelative(-1) },
+  { key = 'k', mods = 'CTRL|ALT', action = act.MoveTabRelative(1) },
   { key = 't', mods = 'CTRL|SHIFT', action = act.SpawnTab "CurrentPaneDomain" },
   { key = 'q', mods = 'CTRL|SHIFT', action = act.CloseCurrentTab { confirm = false } },
 
@@ -34,8 +34,8 @@ config.keys = {
   { key = 's', mods = 'ALT|SUPER', action = act.SplitVertical },
   { key = 'q', mods = 'ALT|SUPER', action = act.CloseCurrentPane { confirm = false } },
 
-  { key = 'u', mods = 'CTRL|SHIFT', action = act.ScrollByPage(-0.6) },
-  { key = 'd', mods = 'CTRL|SHIFT', action = act.ScrollByPage(0.6) },
+  { key = 'u', mods = 'CTRL|SHIFT', action = act.ScrollByPage(-0.5) },
+  { key = 'd', mods = 'CTRL|SHIFT', action = act.ScrollByPage(0.5) },
   { key = 'p', mods = 'CTRL|SHIFT', action = act.ScrollToPrompt(-1) },
   { key = 'n', mods = 'CTRL|SHIFT', action = act.ScrollToPrompt(1) },
 
@@ -49,12 +49,5 @@ config.keys = {
   { key = 'f', mods = 'CTRL|SHIFT', action = act.Search { CaseSensitiveString = "" } },
   { key = 'x', mods = 'CTRL|SHIFT', action = act.ActivateCopyMode },
 }
-
-for i = 1, 9 do
-  table.insert(
-    config.keys,
-    { key = tostring(i), mods = 'CTRL|SHIFT', action = act.ActivateTab(i - 1) }
-  )
-end
 
 return config

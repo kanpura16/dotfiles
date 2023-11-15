@@ -50,16 +50,16 @@ alias del='rm -rf'
 alias grep='grep --color=auto'
 
 alias xi='sudo xbps-install'
+alias xr='sudo xbps-remove'
+alias xq='sudo xbps-query'
 alias xs='xbps-src-install'
 xbps-src-install() {
-  ~/void-packages/xbps-src pkg $1 && xi --repository hostdir/binpkgs $1
+  ~/void-packages/xbps-src pkg $1 && xi -R hostdir/binpkgs $1
 }
 alias xs-Su='xbps-src-update'
 xbps-src-update() {
     xi -Su && cd ~/void-packages && git pull && ./xbps-src update-sys
 }
-alias xr='sudo xbps-remove'
-alias xq='sudo xbps-query'
 
 alias g='git'
 alias gi='git init'
@@ -71,23 +71,20 @@ alias gr='git remote'
 alias gl='git log'
 alias gps='git push'
 alias gpl='git pull'
-alias gf='git fetch'
 alias gcl='git clone'
 alias gb='git branch'
 alias gco='git checkout'
 
-alias hxconf='h ~/.config/helix/config.toml'
 alias wezconf='h ~/.config/wezterm/wezterm.lua'
-alias zshconf='h ~/.zshrc'
 alias hyprconf='h ~/.config/hypr/hyprland.conf'
 
 export PROMPT='
 %F{4}%~
 > %f'
-export EDITOR=hx
 export HISTFILE=~/.zsh_history
-export SAVEHIST=16384
-export HISTSIZE=4096
+export SAVEHIST=65536
+export HISTSIZE=65536
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
+export PATH=$PATH:~/.local/bin
