@@ -16,7 +16,7 @@ enable = true
 max-indent-retain = 32
 
 [editor.lsp]
-# display-inlay-hints = true
+display-inlay-hints = true
 
 [editor.file-picker]
 hidden = false

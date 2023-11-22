@@ -44,10 +44,11 @@ fd() {
 zle -N fd
 bindkey '^g' fd
 
-alias h='hx'
 alias s='sudo'
 alias del='rm -rf'
 alias grep='grep --color=auto'
+alias h='hx'
+alias g='git'
 
 alias xi='sudo xbps-install'
 alias xr='sudo xbps-remove'
@@ -61,30 +62,20 @@ xbps-src-update() {
     xi -Su && cd ~/void-packages && git pull && ./xbps-src update-sys
 }
 
-alias g='git'
-alias gi='git init'
-alias ga='git add'
-alias gc='git commit'
-alias gd='git diff'
-alias gs='git status'
-alias gr='git remote'
-alias gl='git log'
-alias gps='git push'
-alias gpl='git pull'
-alias gcl='git clone'
-alias gb='git branch'
-alias gco='git checkout'
-
-alias wezconf='h ~/.config/wezterm/wezterm.lua'
 alias hyprconf='h ~/.config/hypr/hyprland.conf'
+alias wezconf='h ~/.config/wezterm/wezterm.lua'
+alias zshconf='h ~/.zshrc'
 
 export PROMPT='
 %F{4}%~
 > %f'
+export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.cargo/bin
+export EDITOR=hx
+
 export HISTFILE=~/.zsh_history
 export SAVEHIST=65536
 export HISTSIZE=65536
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-export PATH=$PATH:~/.local/bin
