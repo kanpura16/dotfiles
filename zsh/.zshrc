@@ -7,6 +7,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*:default' list-colors di=34
 
 setopt correct
+setopt no_beep
 setopt ignore_eof
 setopt auto_cd
 setopt auto_pushd
@@ -15,6 +16,41 @@ setopt pushd_silent
 setopt share_history
 setopt hist_ignore_all_dups
 setopt inc_append_history
+
+export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.cargo/bin
+export EDITOR=hx
+export HISTFILE=~/.zsh_history
+export SAVEHIST=100000
+export HISTSIZE=100000
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export PROMPT='
+%F{4}%~
+> %f'
+
+alias s='sudo'
+alias h='hx'
+alias g='git'
+alias del='rm -rf'
+alias grep='grep --color=auto'
+
+alias xi='sudo xbps-install'
+alias xr='sudo xbps-remove'
+alias xq='sudo xbps-query'
+alias xs='xbps-src-install'
+xbps-src-install() {
+  ~/void-packages/xbps-src pkg $1 && xi -R hostdir/binpkgs $1
+}
+alias xs-Su='xbps-src-update'
+xbps-src-update() {
+    xi -Su && cd ~/void-packages && git pull && ./xbps-src update-sys
+}
+
+alias hyprconf='h ~/.config/hypr/hyprland.conf'
+alias wezconf='h ~/.config/wezterm/wezterm.lua'
+alias zshconf='h ~/.zshrc'
 
 fzf-select-history() {
     BUFFER=$(history -n -r 1 | fzf --query "$LBUFFER")
@@ -43,39 +79,3 @@ fd() {
 }
 zle -N fd
 bindkey '^g' fd
-
-alias s='sudo'
-alias del='rm -rf'
-alias grep='grep --color=auto'
-alias h='hx'
-alias g='git'
-
-alias xi='sudo xbps-install'
-alias xr='sudo xbps-remove'
-alias xq='sudo xbps-query'
-alias xs='xbps-src-install'
-xbps-src-install() {
-  ~/void-packages/xbps-src pkg $1 && xi -R hostdir/binpkgs $1
-}
-alias xs-Su='xbps-src-update'
-xbps-src-update() {
-    xi -Su && cd ~/void-packages && git pull && ./xbps-src update-sys
-}
-
-alias hyprconf='h ~/.config/hypr/hyprland.conf'
-alias wezconf='h ~/.config/wezterm/wezterm.lua'
-alias zshconf='h ~/.zshrc'
-
-export PROMPT='
-%F{4}%~
-> %f'
-export PATH=$PATH:~/.local/bin
-export PATH=$PATH:~/.cargo/bin
-export EDITOR=hx
-
-export HISTFILE=~/.zsh_history
-export SAVEHIST=65536
-export HISTSIZE=65536
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx

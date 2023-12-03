@@ -5,10 +5,9 @@ local config = {
   color_scheme = 'tokyonight',
   font = wezterm.font("JetBrainsMono NF"),
   use_ime = true,
-  -- window_background_opacity = 0.6,
   window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
-  hide_tab_bar_if_only_one_tab = true,
   use_fancy_tab_bar = false,
+  hide_tab_bar_if_only_one_tab = true,
   disable_default_key_bindings = true,
 }
 
