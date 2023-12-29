@@ -2,11 +2,12 @@
 /.**
 
 !.gitignore
+!/fontconfig
+!/fontconfig/*
 !/helix
 !/helix/*
 !/hypr
 !/hypr/*
-!vimium-options.json
 !/wezterm
 !/wezterm/*
 !/wofi
@@ -15,3 +16,4 @@
 !/zsh/*
 !/zsh/sheldon
 !/zsh/sheldon/*
+!vimium-options.json

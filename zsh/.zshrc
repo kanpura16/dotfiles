@@ -18,7 +18,6 @@ setopt hist_ignore_all_dups
 setopt inc_append_history
 
 export PATH=$PATH:~/.local/bin
-export PATH=$PATH:~/.cargo/bin
 export EDITOR=hx
 export HISTFILE=~/.zsh_history
 export SAVEHIST=100000
@@ -33,6 +32,7 @@ export PROMPT='
 alias s='sudo'
 alias h='hx'
 alias g='git'
+alias c='clear'
 alias del='rm -rf'
 alias grep='grep --color=auto'
 
@@ -70,12 +70,12 @@ fzf-z-search() {
 zle -N fzf-z-search
 bindkey '^z' fzf-z-search
 
-fd() {
-    local dir
-    dir=$(find ${1:-.} -path '*/\.*' -prune \
-                    -o -type d -print 2> /dev/null | fzf +m) &&
-    cd "$dir"
-    zle reset-prompt
-}
-zle -N fd
-bindkey '^g' fd
+# fd() {
+#     local dir
+#     dir=$(find ${1:-.} -path '*/\.*' -prune \
+#                     -o -type d -print 2> /dev/null | fzf +m) &&
+#     cd "$dir"
+#     zle reset-prompt
+# }
+# zle -N fd
+# bindkey '^g' fd
