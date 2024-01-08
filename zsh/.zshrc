@@ -34,7 +34,12 @@ alias h='hx'
 alias g='git'
 alias c='clear'
 alias del='rm -rf'
+alias la='ls -a --color=auto'
+alias ll='ls -al --color=auto'
 alias grep='grep --color=auto'
+unalias l.
+unalias run-help
+unalias which-command
 
 alias xi='sudo xbps-install'
 alias xr='sudo xbps-remove'
