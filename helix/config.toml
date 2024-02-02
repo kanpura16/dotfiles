@@ -38,7 +38,7 @@ A-t = "transpose_view"
 A-q = "wclose"
 
 [keys.insert]
-q = { i = "normal_mode" }
+j = { k = "normal_mode" }
 C-f = "move_char_right"
 C-b = "move_char_left"
 C-p = "move_line_up"

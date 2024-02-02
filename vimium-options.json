@@ -1,21 +1,14 @@
 {
-  "settingsVersion": "1.67.7",
-  "exclusionRules": [],
-  "filterLinkHints": false,
-  "waitForEnterForFilteredHints": true,
-  "hideHud": false,
   "keyMappings": "unmap x\nunmap X\nmap q removeTab\nmap Q restoreTab\n\nunmap >>\nunmap <<\nmap <c-J> moveTabLeft\nmap <c-K> moveTabRight\n\nunmap [[\nunmap ]]\nmap < goPrevious\nmap > goNext\n\nunmap G\nmap ge scrollToBottom\n\nunmap `\nmap gm Marks.activateGotoMode\n\nunmap gE\nmap e Vomnibar.activateEditUrl\nmap E Vomnibar.activateEditUrlInNewTab\n\nunmap gt\nunmap gT\nunmap <c-e>\nunmap <c-y>",
-  "linkHintCharacters": "ashtdrneoiupcf",
-  "linkHintNumbers": "0123456789",
+  "linkHintCharacters": "iaetoudlkhjrnf",
   "newTabUrl": "https://search.brave.com/",
   "nextPatterns": "next,more,newer,>,›,→,»,≫,>>,次へ,進む,もっと見る,もっとみる,次のページ",
   "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<,前へ,戻る,前のページ",
-  "regexFindMode": false,
-  "ignoreKeyboardLayout": false,
-  "scrollStepSize": 128,
-  "smoothScroll": true,
+  "scrollStepSize": 64,
   "grabBackFocus": true,
-  "searchEngines": "g: https://www.google.com/search?q=%s Google\nb: https://search.brave.com/search?q=%s BraveSearch\naw: https://wiki.archlinux.org/index.php?search=%s ArchWiki\na: https://www.amazon.co.jp/s?k=%s Amazon\ny: https://www.youtube.com/results?search_query=%s Youtube\nx: https://twitter.com/search?q=%s X",
+  "searchEngines": "g: https://www.google.co.jp/search?q=%s Google\nb: https://search.brave.com/search?q=%s BraveSearch\ns: https://www.startpage.com/do/search?query=%s StartPage\naw: https://wiki.archlinux.org/index.php?search=%s ArchWiki\na: https://www.amazon.co.jp/s?k=%s Amazon\ny: https://www.youtube.com/results?search_query=%s Youtube\nx: https://twitter.com/search?q=%s X",
   "searchUrl": "https://search.brave.com/search?q=",
-  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n  /* linkhint boxes */\n  background: #FFF785;\n  box-shadow: none;\n}\n\ndiv > .vimiumHintMarker span {\n  /* linkhint text */\n  color: black;\n  font-weight: bold;\n  font-size: 14px;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n  color: #FFF785;\n}"
+  "settingsVersion": "2.0.6",
+  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n  /* linkhint boxes */\n  background: #FFF785;\n  box-shadow: none;\n}\n\ndiv > .vimiumHintMarker span {\n  /* linkhint text */\n  color: black;\n  font-weight: bold;\n  font-size: 14px;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n  color: #FFF785;\n}",
+  "exclusionRules": []
 }
