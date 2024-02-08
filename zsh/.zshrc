@@ -34,12 +34,7 @@ alias h='hx'
 alias g='git'
 alias c='clear'
 alias del='rm -rf'
-alias la='ls -a --color=auto'
-alias ll='ls -al --color=auto'
 alias grep='grep --color=auto'
-unalias l.
-unalias run-help
-unalias which-command
 
 alias xi='sudo xbps-install'
 alias xr='sudo xbps-remove'
@@ -52,10 +47,6 @@ alias xs-Su='xbps-src-update'
 xbps-src-update() {
     xi -Su && cd ~/void-packages && git pull && ./xbps-src update-sys
 }
-
-alias hyprconf='h ~/.config/hypr/hyprland.conf'
-alias wezconf='h ~/.config/wezterm/wezterm.lua'
-alias zshconf='h ~/.zshrc'
 
 fzf-select-history() {
     BUFFER=$(history -n -r 1 | fzf --query "$LBUFFER")
