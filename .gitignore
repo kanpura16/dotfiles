@@ -2,12 +2,16 @@
 /.**
 
 !.gitignore
+!/foot
+!/foot/*
 !/fontconfig
 !/fontconfig/*
 !/helix
 !/helix/*
 !/hypr
 !/hypr/*
+!/river
+!/river/*
 !/wezterm
 !/wezterm/*
 !/wofi

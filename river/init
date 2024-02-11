@@ -1,0 +1,92 @@
+#!/bin/sh
+
+foot --server &
+pipewire &
+fcitx5 &
+wl-paste -t text -w clipman store --no-persist &
+tail -f ~/.local/share/wobpipe | wob &
+swayidle timeout 300 "pamixer --set-volume 0 ; waylock -fork-on-lock ; wlopm --off eDP-1 ; wlopm --off DP-1" resume "wlopm --on eDP-1 ; wlopm --on DP-1" &
+
+wlr-randr --output eDP-1 --scale 1.2
+wlr-randr --output DP-1 --scale 1.8
+
+riverctl set-repeat 100 200
+
+riverctl map normal Super Return spawn footclient
+riverctl map normal Super B spawn firefox
+riverctl map normal Super A spawn "wofi --show run"
+riverctl map normal Super V spawn "clipman pick -t wofi"
+riverctl map normal Super S spawn "grimshot save area ~/pictures/screenshots/$(date "+%Y-%m-%d_%H:%M:%S")'.png'"
+riverctl map normal Super C spawn "hyprpicker -a"
+riverctl map normal Super W spawn "pamixer --set-volume 0 ; waylock -fork-on-lock"
+riverctl map normal Super M spawn "makoctl dismiss"
+riverctl map normal Super+Shift M spawn "makoctl invoke"
+riverctl map normal Super+Shift B spawn "cat /sys/class/power_supply/BAT0/capacity > ~/.local/share/wobpipe"
+
+riverctl map normal Super R spawn "pamixer -i 5 ; pamixer --get-volume > ~/.local/share/wobpipe"
+riverctl map normal Super N spawn "pamixer -d 5 ; pamixer --get-volume > ~/.local/share/wobpipe"
+riverctl map normal Super P spawn "pamixer --set-volume 0 ; pamixer --get-volume > ~/.local/share/wobpipe"
+riverctl map normal Super+Shift R spawn "cat /sys/class/backlight/amdgpu_bl0/brightness | awk '{print $1 + 10}' > /sys/class/backlight/amdgpu_bl0/brightness"
+riverctl map normal Super+Shift N spawn "cat /sys/class/backlight/amdgpu_bl0/brightness | awk '{print $1 - 10}' > /sys/class/backlight/amdgpu_bl0/brightness"
+riverctl map normal Super+Control R spawn "ddcutil setvcp 10 + 5"
+riverctl map normal Super+Control N spawn "ddcutil setvcp 10 - 5"
+riverctl map normal Super+Control+Shift R spawn "ddcutil setvcp 12 + 5"
+riverctl map normal Super+Control+Shift N spawn "ddcutil setvcp 12 - 5"
+
+riverctl map normal Super F toggle-fullscreen
+riverctl map normal Super+Shift F toggle-float
+riverctl map normal Super Q close
+riverctl map normal Super+Shift Q exit
+
+riverctl map normal Super J focus-view next
+riverctl map normal Super K focus-view previous
+riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"
+riverctl map normal Super L send-layout-cmd rivertile "main-ratio +0.05"
+riverctl map normal Super+Shift J swap next
+riverctl map normal Super+Shift K swap previous
+riverctl map normal Super+Control H resize horizontal -80
+riverctl map normal Super+Control J resize vertical 80
+riverctl map normal Super+Control K resize vertical -80
+riverctl map normal Super+Control L resize horizontal 80
+
+riverctl map normal Super+Alt H move left 100
+riverctl map normal Super+Alt J move down 100
+riverctl map normal Super+Alt K move up 100
+riverctl map normal Super+Alt L move right 100
+riverctl map normal Super+Alt+Control H snap left
+riverctl map normal Super+Alt+Control J snap down
+riverctl map normal Super+Alt+Control K snap up
+riverctl map normal Super+Alt+Control L snap right
+
+riverctl map normal Super Period focus-output next
+riverctl map normal Super Comma focus-output previous
+riverctl map normal Super+Shift Period send-to-output next
+riverctl map normal Super+Shift Comma send-to-output previous
+
+for i in $(seq 1 9)
+do
+    tags=$((1 << ($i - 1)))
+
+    riverctl map normal Super $i set-focused-tags $tags
+    riverctl map normal Super+Shift $i set-view-tags $tags
+    riverctl map normal Super+Control $i toggle-focused-tags $tags
+    riverctl map normal Super+Shift+Control $i toggle-view-tags $tags
+done
+
+all_tags=$(((1 << 32) - 1))
+riverctl map normal Super 0 set-focused-tags $all_tags
+riverctl map normal Super+Shift 0 set-view-tags $all_tags
+
+riverctl map normal Super Up    send-layout-cmd rivertile "main-location top"
+riverctl map normal Super Right send-layout-cmd rivertile "main-location right"
+riverctl map normal Super Down  send-layout-cmd rivertile "main-location bottom"
+riverctl map normal Super Left  send-layout-cmd rivertile "main-location left"
+
+riverctl default-layout rivertile
+
+riverctl background-color 0x002b36
+riverctl border-color-focused 0x839191
+riverctl border-color-unfocused 0x283e35
+riverctl border-width 1
+rivertile -view-padding 0 -outer-padding 0 
+
