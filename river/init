@@ -14,6 +14,7 @@ wlr-randr --output DP-1 --scale 1.7
 riverctl set-repeat 100 200
 
 riverctl map normal Super Return spawn footclient
+riverctl map normal Super+Control Return spawn "footclient --app-id float"
 riverctl map normal Super B spawn firefox
 riverctl map normal Super A spawn "wofi --show run"
 riverctl map normal Super V spawn "clipman pick -t wofi"
@@ -83,7 +84,7 @@ riverctl map normal Super Right send-layout-cmd rivertile "main-location right"
 riverctl map normal Super Down  send-layout-cmd rivertile "main-location bottom"
 riverctl map normal Super Left  send-layout-cmd rivertile "main-location left"
 
-riverctl rule-add -app-id 'float*' -title 'foo' float
+riverctl float-filter-add app-id 'float'
 
 riverctl default-layout rivertile
 

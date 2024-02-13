@@ -10,9 +10,6 @@ setopt correct
 setopt no_beep
 setopt ignore_eof
 setopt auto_cd
-setopt auto_pushd
-setopt pushd_ignore_dups
-setopt pushd_silent
 setopt share_history
 setopt hist_ignore_all_dups
 setopt inc_append_history
@@ -30,9 +27,7 @@ export PROMPT='
 > %f'
 
 alias s='sudo'
-alias h='hx'
 alias g='git'
-alias c='clear'
 alias del='rm -rf'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
@@ -66,13 +61,3 @@ fzf-z-search() {
 }
 zle -N fzf-z-search
 bindkey '^z' fzf-z-search
-
-# fd() {
-#     local dir
-#     dir=$(find ${1:-.} -path '*/\.*' -prune \
-#                     -o -type d -print 2> /dev/null | fzf +m) &&
-#     cd "$dir"
-#     zle reset-prompt
-# }
-# zle -N fd
-# bindkey '^g' fd
