@@ -72,25 +72,25 @@ do
     riverctl map normal Super $i set-focused-tags $tags
     riverctl map normal Super+Shift $i set-view-tags $tags
     riverctl map normal Super+Control $i toggle-focused-tags $tags
-    riverctl map normal Super+Shift+Control $i toggle-view-tags $tags
+    riverctl map normal Super+Alt $i toggle-view-tags $tags
 done
 
 all_tags=$(((1 << 32) - 1))
 riverctl map normal Super 0 set-focused-tags $all_tags
 riverctl map normal Super+Shift 0 set-view-tags $all_tags
 
-riverctl map normal Super Up    send-layout-cmd rivertile "main-location top"
-riverctl map normal Super Right send-layout-cmd rivertile "main-location right"
-riverctl map normal Super Down  send-layout-cmd rivertile "main-location bottom"
-riverctl map normal Super Left  send-layout-cmd rivertile "main-location left"
+riverctl map normal Super right send-layout-cmd rivertile "main-location right"
+riverctl map normal Super down send-layout-cmd rivertile "main-location bottom"
+riverctl map normal Super up send-layout-cmd rivertile "main-location top"
+riverctl map normal Super left send-layout-cmd rivertile "main-location left"
 
 riverctl float-filter-add app-id 'float'
 
 riverctl default-layout rivertile
 
-riverctl background-color 0x002b36
-riverctl border-color-focused 0x839191
-riverctl border-color-unfocused 0x283e35
+riverctl background-color 0x444444
+riverctl border-color-focused 0x777777
+riverctl border-color-unfocused 0x000000
 riverctl border-width 1
 rivertile -view-padding 0 -outer-padding 0 
 

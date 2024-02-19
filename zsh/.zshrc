@@ -7,9 +7,9 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*:default' list-colors di=34
 
 setopt correct
+setopt auto_cd
 setopt no_beep
 setopt ignore_eof
-setopt auto_cd
 setopt share_history
 setopt hist_ignore_all_dups
 setopt inc_append_history
@@ -35,14 +35,6 @@ alias grep='grep --color=auto'
 alias xi='sudo xbps-install'
 alias xr='sudo xbps-remove'
 alias xq='sudo xbps-query'
-alias xs='xbps-src-install'
-xbps-src-install() {
-  ~/void-packages/xbps-src pkg $1 && xi -R hostdir/binpkgs $1
-}
-alias xs-Su='xbps-src-update'
-xbps-src-update() {
-    xi -Su && cd ~/void-packages && git pull && ./xbps-src update-sys
-}
 
 fzf-select-history() {
     BUFFER=$(history -n -r 1 | fzf --query "$LBUFFER")
