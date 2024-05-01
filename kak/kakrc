@@ -1,0 +1,29 @@
+colorscheme pastel 
+add-highlighter global/ number-lines -hlcursor
+
+set-option global indentwidth 4
+
+map global normal <c-/> :comment-line<ret>
+
+map global insert <c-h> <esc>
+map global insert <c-f> <right>
+map global insert <c-b> <left>
+map global insert <c-p> <up>
+map global insert <c-n> <down>
+map global insert <c-a> <home>
+map global insert <c-e> <end>
+map global insert <tab> <c-n>
+map global insert <s-tab> <c-p>
+
+map global user f %{:fzf-mode<ret>} -docstring 'fzf mode'
+map global user l %{:enter-user-mode lsp<ret>} -docstring 'lsp mode'
+
+eval %sh{kak-lsp --kakoune -s $kak_session}
+lsp-enable
+
+eval %sh{ printf 'source ~/.config/kak/fzf.kak/rc/fzf.kak' }
+eval %sh{ printf 'source ~/.config/kak/fzf.kak/rc/modules/fzf-buffer.kak' }
+eval %sh{ printf 'source ~/.config/kak/fzf.kak/rc/modules/fzf-cd.kak' }
+eval %sh{ printf 'source ~/.config/kak/fzf.kak/rc/modules/fzf-file.kak' }
+eval %sh{ printf 'source ~/.config/kak/fzf.kak/rc/modules/fzf-grep.kak' }
+eval %sh{ printf 'source ~/.config/kak/fzf.kak/rc/modules/fzf-search.kak' }
