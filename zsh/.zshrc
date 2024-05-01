@@ -8,14 +8,14 @@ zstyle ':completion:*:default' list-colors di=34
 
 setopt correct
 setopt auto_cd
-setopt no_beep
 setopt ignore_eof
 setopt share_history
 setopt hist_ignore_all_dups
 setopt inc_append_history
 
+export TERM=footclient
 export PATH=$PATH:~/.local/bin
-export EDITOR=hx
+export EDITOR=kak
 export HISTFILE=~/.zsh_history
 export SAVEHIST=100000
 export HISTSIZE=100000
@@ -26,7 +26,6 @@ export PROMPT='
 %F{4}%~
 > %f'
 
-alias s='sudo'
 alias g='git'
 alias del='rm -rf'
 alias ls='ls --color=auto'
