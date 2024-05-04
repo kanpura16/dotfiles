@@ -1,11 +1,23 @@
 colorscheme pastel 
 add-highlighter global/ number-lines -hlcursor
+add-highlighter global/ show-matching
 
 set-option global tabstop 4
 set-option global indentwidth 4
+set-option global git_diff_add_char "+"
+set-option global git_diff_del_char "-"
+set-option global git_diff_top_char "="
+set-option global git_diff_mod_char "~"
+
+hook global WinCreate .* 'git show-diff'
+hook global BufWritePost .* 'git update-diff'
+hook global BufReload .* 'git update-diff'
 
 define-command x wq -docstring 'alias of :wq'
 
+map global normal <ret> :
+map global normal <esc> ,<esc>
+map global normal Y <a-|>wl-copy<ret>
 map global normal <c-/> :comment-line<ret>
 
 map global insert ( ()<left>
@@ -14,7 +26,6 @@ map global insert { {}<left>
 map global insert <'> <'><'><left>
 map global insert <"> <"><"><left>
 map global insert <`> <`><`><left>
-map global insert <c-h> <esc>
 map global insert <c-f> <right>
 map global insert <c-b> <left>
 map global insert <c-p> <up>
@@ -22,14 +33,18 @@ map global insert <c-n> <down>
 map global insert <c-a> <home>
 map global insert <c-e> <end>
 
+hook global InsertChar k %{ try %{
+  exec -draft hH <a-k>jk<ret> d
+  exec <esc>
+}}
+hook global InsertCompletionShow .* %{ map window insert <tab> <c-n>; map window insert <s-tab> <c-p> }
+hook global InsertCompletionHide .* %{ unmap window insert <tab> <c-n>; unmap window insert <s-tab> <c-p> }
+
 map global goto n <esc>:buffer-next<ret> -docstring 'next buffer'
 map global goto p <esc>:buffer-previous<ret> -docstring 'prev buffer'
 
 map global user f %{:fzf-mode<ret>} -docstring 'fzf mode'
 map global user l %{:enter-user-mode lsp<ret>} -docstring 'lsp mode'
-
-hook global InsertCompletionShow .* %{ map window insert <tab> <c-n>; map window insert <s-tab> <c-p> }
-hook global InsertCompletionHide .* %{ unmap window insert <tab> <c-n>; unmap window insert <s-tab> <c-p> }
 
 eval %sh{kak-lsp --kakoune -s $kak_session}
 lsp-enable
