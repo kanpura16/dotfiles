@@ -13,9 +13,9 @@ setopt share_history
 setopt hist_ignore_all_dups
 setopt inc_append_history
 
-export TERM=footclient
-export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.local/bin:~/.cargo/bin
 export EDITOR=kak
+export TERM=footclient
 export HISTFILE=~/.zsh_history
 export SAVEHIST=100000
 export HISTSIZE=100000

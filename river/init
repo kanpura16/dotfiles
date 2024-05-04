@@ -10,7 +10,10 @@ swayidle timeout 300 "pamixer --set-volume 0 ; waylock -fork-on-lock ; wlopm --o
 
 wlopm --off eDP-1
 # wlr-randr --output eDP-1 --scale 1.2
-wlr-randr --output DP-1 --scale 1.7
+wlr-randr --output DP-1 --scale 1.8
+
+riverctl default-layout rivertile
+rivertile -view-padding 0 -outer-padding 0 -main-count 1 -main-ratio 0.5 &
 
 riverctl set-repeat 100 200
 riverctl hide-cursor when-typing enabled
@@ -41,6 +44,13 @@ riverctl map normal Super F toggle-fullscreen
 riverctl map normal Super+Shift F toggle-float
 riverctl map normal Super Q close
 riverctl map normal Super+Shift Q exit
+
+riverctl map normal Super i send-layout-cmd rivertile "main-count +1"
+riverctl map normal Super d send-layout-cmd rivertile "main-count -1"
+riverctl map normal Super up send-layout-cmd rivertile "main-location top"
+riverctl map normal Super down send-layout-cmd rivertile "main-location bottom"
+riverctl map normal Super left send-layout-cmd rivertile "main-location left"
+riverctl map normal Super right send-layout-cmd rivertile "main-location right"
 
 riverctl map normal Super J focus-view next
 riverctl map normal Super K focus-view previous
@@ -81,17 +91,9 @@ all_tags=$(((1 << 32) - 1))
 riverctl map normal Super 0 set-focused-tags $all_tags
 riverctl map normal Super+Shift 0 set-view-tags $all_tags
 
-riverctl map normal Super right send-layout-cmd rivertile "main-location right"
-riverctl map normal Super down send-layout-cmd rivertile "main-location bottom"
-riverctl map normal Super up send-layout-cmd rivertile "main-location top"
-riverctl map normal Super left send-layout-cmd rivertile "main-location left"
-
 riverctl float-filter-add app-id 'float'
 
-riverctl default-layout rivertile
-
 riverctl background-color 0x444444
-riverctl border-color-focused 0x777777
+riverctl border-color-focused 0x888888
 riverctl border-color-unfocused 0x000000
 riverctl border-width 1
-rivertile -view-padding 0 -outer-padding 0 

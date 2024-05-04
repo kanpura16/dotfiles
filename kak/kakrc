@@ -1,10 +1,19 @@
 colorscheme pastel 
 add-highlighter global/ number-lines -hlcursor
 
+set-option global tabstop 4
 set-option global indentwidth 4
+
+define-command x wq -docstring 'alias of :wq'
 
 map global normal <c-/> :comment-line<ret>
 
+map global insert ( ()<left>
+map global insert [ []<left>
+map global insert { {}<left>
+map global insert <'> <'><'><left>
+map global insert <"> <"><"><left>
+map global insert <`> <`><`><left>
 map global insert <c-h> <esc>
 map global insert <c-f> <right>
 map global insert <c-b> <left>
@@ -12,14 +21,20 @@ map global insert <c-p> <up>
 map global insert <c-n> <down>
 map global insert <c-a> <home>
 map global insert <c-e> <end>
-map global insert <tab> <c-n>
-map global insert <s-tab> <c-p>
+
+map global goto n <esc>:buffer-next<ret> -docstring 'next buffer'
+map global goto p <esc>:buffer-previous<ret> -docstring 'prev buffer'
 
 map global user f %{:fzf-mode<ret>} -docstring 'fzf mode'
 map global user l %{:enter-user-mode lsp<ret>} -docstring 'lsp mode'
 
+hook global InsertCompletionShow .* %{ map window insert <tab> <c-n>; map window insert <s-tab> <c-p> }
+hook global InsertCompletionHide .* %{ unmap window insert <tab> <c-n>; unmap window insert <s-tab> <c-p> }
+
 eval %sh{kak-lsp --kakoune -s $kak_session}
 lsp-enable
+lsp-inlay-hints-enable global
+lsp-inlay-diagnostics-enable global
 
 eval %sh{ printf 'source ~/.config/kak/fzf.kak/rc/fzf.kak' }
 eval %sh{ printf 'source ~/.config/kak/fzf.kak/rc/modules/fzf-buffer.kak' }
