@@ -13,7 +13,7 @@ hook global WinCreate .* 'git show-diff'
 hook global BufWritePost .* 'git update-diff'
 hook global BufReload .* 'git update-diff'
 
-define-command x wq -docstring 'alias of :wq'
+define-command x waq -docstring 'alias of :waq'
 
 map global normal <ret> :
 map global normal <esc> ,<esc>
@@ -50,6 +50,7 @@ eval %sh{kak-lsp --kakoune -s $kak_session}
 lsp-enable
 lsp-inlay-hints-enable global
 lsp-inlay-diagnostics-enable global
+lsp-auto-signature-help-enable
 
 eval %sh{ printf 'source ~/.config/kak/fzf.kak/rc/fzf.kak' }
 eval %sh{ printf 'source ~/.config/kak/fzf.kak/rc/modules/fzf-buffer.kak' }
