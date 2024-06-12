@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/usr/bin/sh
 
-# wlopm --off eDP-1
-wlr-randr --output eDP-1 --scale 1.2
-wlr-randr --output DP-1 --scale 1.8
+wlopm --off eDP-1
+# wlr-randr --output eDP-1 --scale 1.2
+wlr-randr --output DP-1 --scale 1.6
 
 foot --server &
 mako &
@@ -11,11 +11,17 @@ fcitx5 &
 wl-paste -t text -w clipman store --no-persist &
 tail -f ~/.local/share/wobpipe | wob &
 swayidle timeout 300 "pamixer --set-volume 0 ; waylock -fork-on-lock ; wlopm --off eDP-1 ; wlopm --off DP-1 ; zzz" resume "wlopm --on eDP-1 ; wlopm --on DP-1" &
-wlsunset -o eDP-1 -S 04:30 -s 18:30 -t 0 -T 6500 -d 1800 -g 0.8 &
-wlsunset -o DP-1 -S 04:30 -s 18:30 -t 0 -T 6500 -d 1800 -g 0.8 &
+# wlsunset -o eDP-1 -S 04:30 -s 18:00 -t 0 -T 6500 -d 1800 -g 1 &
+wlsunset -o DP-1 -S 04:30 -s 18:00 -t 0 -T 6500 -d 1800 -g 1 &
 
 riverctl default-layout rivertile
 rivertile -view-padding 0 -outer-padding 0 -main-count 1 -main-ratio 0.5 &
+riverctl float-filter-add app-id 'float'
+
+riverctl background-color 0x444444
+riverctl border-color-focused 0x666666
+riverctl border-color-unfocused 0x000000
+riverctl border-width 1
 
 riverctl set-repeat 100 200
 riverctl hide-cursor when-typing enabled
@@ -92,10 +98,3 @@ done
 all_tags=$(((1 << 32) - 1))
 riverctl map normal Super 0 set-focused-tags $all_tags
 riverctl map normal Super+Shift 0 set-view-tags $all_tags
-
-riverctl float-filter-add app-id 'float'
-
-riverctl background-color 0x444444
-riverctl border-color-focused 0x888888
-riverctl border-color-unfocused 0x000000
-riverctl border-width 1

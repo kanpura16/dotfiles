@@ -1,13 +1,13 @@
-colorscheme pastel 
-add-highlighter global/ number-lines -hlcursor
+colorscheme theme
+# add-highlighter global/ number-lines -hlcursor
 add-highlighter global/ show-matching
 
 set-option global tabstop 4
 set-option global indentwidth 4
 set-option global git_diff_add_char "+"
 set-option global git_diff_del_char "-"
-set-option global git_diff_top_char "="
-set-option global git_diff_mod_char "~"
+set-option global git_diff_mod_char "^"
+set-option global git_diff_top_char "_"
 
 hook global WinCreate .* 'git show-diff'
 hook global BufWritePost .* 'git update-diff'
@@ -16,22 +16,20 @@ hook global BufReload .* 'git update-diff'
 define-command x waq -docstring 'alias of :waq'
 
 map global normal <ret> :
+map global normal <c-ret> i<ret><esc>
 map global normal <esc> ,<esc>
 map global normal Y <a-|>wl-copy<ret>
 map global normal <c-/> :comment-line<ret>
 
-map global insert ( ()<left>
-map global insert [ []<left>
-map global insert { {}<left>
-map global insert <'> <'><'><left>
-map global insert <"> <"><"><left>
-map global insert <`> <`><`><left>
 map global insert <c-f> <right>
 map global insert <c-b> <left>
 map global insert <c-p> <up>
 map global insert <c-n> <down>
 map global insert <c-a> <home>
 map global insert <c-e> <end>
+map global insert <c-d> <del>
+map global insert <c-h> <backspace>
+map global insert <c-w> <esc>b<a-c>
 
 hook global InsertChar k %{ try %{
   exec -draft hH <a-k>jk<ret> d
@@ -48,9 +46,12 @@ map global user l %{:enter-user-mode lsp<ret>} -docstring 'lsp mode'
 
 eval %sh{kak-lsp --kakoune -s $kak_session}
 lsp-enable
-lsp-inlay-hints-enable global
+# lsp-inlay-hints-enable global
 lsp-inlay-diagnostics-enable global
 lsp-auto-signature-help-enable
+
+eval %sh{ printf 'source ~/.config/kak/auto-pairs.kak/rc/auto-pairs.kak' }
+enable-auto-pairs
 
 eval %sh{ printf 'source ~/.config/kak/fzf.kak/rc/fzf.kak' }
 eval %sh{ printf 'source ~/.config/kak/fzf.kak/rc/modules/fzf-buffer.kak' }

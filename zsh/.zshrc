@@ -13,7 +13,7 @@ setopt share_history
 setopt hist_ignore_all_dups
 setopt inc_append_history
 
-export PATH=$PATH:~/.local/bin:~/.cargo/bin
+export PATH=$PATH:~/.local/bin
 export EDITOR=kak
 export TERM=footclient
 export HISTFILE=~/.zsh_history
@@ -26,8 +26,6 @@ export PROMPT='
 %F{4}%~
 > %f'
 
-alias g='git'
-alias del='rm -rf'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
