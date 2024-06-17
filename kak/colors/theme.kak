@@ -22,7 +22,7 @@ face global SecondaryCursorEol ,bright-green
 face global MatchingChar bright-white,bright-black
 
 declare-option str brightbg "rgb:3d3d3d"
-face global MenuForeground black,bright-white
+face global MenuForeground "bright-white,rgb:000000"
 face global MenuBackground "bright-white,%opt{brightbg}"
 
 face global MenuInfo "bright-white,%opt{brightbg}"

@@ -17,13 +17,13 @@ export PATH=$PATH:~/.local/bin
 export EDITOR=kak
 export TERM=footclient
 export HISTFILE=~/.zsh_history
-export SAVEHIST=100000
-export HISTSIZE=100000
+export SAVEHIST=10000
+export HISTSIZE=10000
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export PROMPT='
-%F{4}%~
+%F{12}%~
 > %f'
 
 alias ls='ls --color=auto'
