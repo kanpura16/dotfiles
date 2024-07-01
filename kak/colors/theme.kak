@@ -17,16 +17,16 @@ face global PrimarySelection ,bright-black
 face global SecondarySelection ,bright-black
 face global PrimaryCursor black,bright-white
 face global SecondaryCursor black,bright-white
-face global PrimaryCursorEol ,bright-green
-face global SecondaryCursorEol ,bright-green
+face global PrimaryCursorEol ,bright-blue
+face global SecondaryCursorEol ,bright-blue
 face global MatchingChar bright-white,bright-black
 
-declare-option str brightbg "rgb:3d3d3d"
-face global MenuForeground "bright-white,rgb:000000"
+declare-option str brightbg "rgb:3f3f3f"
+face global MenuForeground black,bright-white
 face global MenuBackground "bright-white,%opt{brightbg}"
 
 face global MenuInfo "bright-white,%opt{brightbg}"
-face global Information white,black
+face global Information bright-white,default
 face global InlineInformation "bright-white,%opt{brightbg}"
 
 face global Error bright-red

@@ -1,27 +1,28 @@
 #!/usr/bin/sh
 
-wlopm --off eDP-1
-# wlr-randr --output eDP-1 --scale 1.2
-wlr-randr --output DP-1 --scale 1.6
+wlopm --off eDP-1 &
+# wlr-randr --output eDP-1 --scale 1.2 &
+wlr-randr --output DP-1 --scale 1.8 &
 
 foot --server &
+fcitx5 &
 mako &
 pipewire &
-fcitx5 &
 wl-paste -t text -w clipman store --no-persist &
 tail -f ~/.local/share/wobpipe | wob &
 swayidle timeout 300 "pamixer --set-volume 0 ; waylock -fork-on-lock ; wlopm --off eDP-1 ; wlopm --off DP-1 ; zzz" resume "wlopm --on eDP-1 ; wlopm --on DP-1" &
 # wlsunset -o eDP-1 -S 04:30 -s 18:00 -t 0 -T 6500 -d 1800 -g 1 &
 wlsunset -o DP-1 -S 04:30 -s 18:00 -t 0 -T 6500 -d 1800 -g 1 &
+wbg ~/pictures/others/wallpaper/pxfuel.jpg &
 
 riverctl default-layout rivertile
 rivertile -view-padding 0 -outer-padding 0 -main-count 1 -main-ratio 0.5 &
 riverctl float-filter-add app-id 'float'
 
 riverctl background-color 0x444444
-riverctl border-color-focused 0x777766
+riverctl border-color-focused 0x777788
 riverctl border-color-unfocused 0x000000
-riverctl border-width 1
+riverctl border-width 2
 
 riverctl set-repeat 100 200
 riverctl hide-cursor when-typing enabled

@@ -2,13 +2,13 @@ colorscheme theme
 # add-highlighter global/ number-lines -hlcursor -relative
 add-highlighter global/ show-matching
 
+set global modelinefmt '%val{bufname} {{context_info}} %val{cursor_line}:%val{cursor_char_column}'
 set global tabstop 4
 set global indentwidth 4
 set global git_diff_add_char '+'
 set global git_diff_del_char '-'
 set global git_diff_mod_char '^'
 set global git_diff_top_char '_'
-set global modelinefmt '%val{bufname} {{context_info}}'
 
 hook global WinCreate .* 'git show-diff'
 hook global BufWritePost .* 'git update-diff'
@@ -17,7 +17,7 @@ hook global BufReload .* 'git update-diff'
 define-command x waq -docstring 'alias of :waq'
 
 map global normal <ret> :
-map global normal <c-ret> o<ret><esc>
+map global normal <c-ret> o<esc>
 map global normal <esc> ,<esc>
 map global normal Y <a-|>wl-copy<ret>
 map global normal <c-/> :comment-line<ret>
